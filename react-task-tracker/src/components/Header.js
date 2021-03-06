@@ -1,8 +1,8 @@
 // With the extension installed, running 'rafce' will create a new component
-const Header = (props) => {
+const Header = ({title}) => {
     return (
         <header>
-            <h1>{props.title}</h1>
+            <h1>{title}</h1>
         </header>
     )
 }
