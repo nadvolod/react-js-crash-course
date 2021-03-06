@@ -8,7 +8,8 @@ const Header = ({title}) => {
             <h1>{title}</h1>
             {/* The button is pulling styling from our index.css
             by referencing class 'btn' */}
-            <Button />
+            <Button color='green' text='Hello'/>
+            <Button color='blue' text='Hello 2'/>
         </header>
     )
 }
