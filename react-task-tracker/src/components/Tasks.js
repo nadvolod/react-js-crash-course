@@ -1,3 +1,5 @@
+import Task from './Task'
+
 const Tasks = ({tasks}) => {
     // Everything is still the same, however, now the list is part
     // of our component state
@@ -5,8 +7,8 @@ const Tasks = ({tasks}) => {
         <>
             {tasks.map((task) => (
                 // A child in a list should have a unique key
-                <h3 key={task.id}>{task.text}</h3>
-            ))}
+                <Task key={task.id} task={task} />
+             ))}
         </>
     )
 }
