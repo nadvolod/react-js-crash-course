@@ -1,12 +1,30 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import {useState} from 'react'
 
 // This is a function component that will render
 function App() {
+  const [tasks, setTasks] = useState(
+    [
+        {
+            id: 1,
+            text: 'food',
+            day: 'x',
+            reminder: false
+        },
+        {    
+            id: 2,
+            text: 'hello',
+            day: 'x',
+            reminder: false
+        }
+    ]
+)
+  
   return (
     <div className="App">
       <Header />
-      <Tasks />
+      <Tasks tasks={tasks}/>
     </div>
   );
 }
