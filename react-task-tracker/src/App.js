@@ -28,10 +28,21 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  //Toggle reminder
+  const toggleReminder = (id) => {
+    //foreach task in our tasks, if the current task id is equal to the id that we're trying to set,
+    // then take that task using the spread operator and add a reminder to it with the inverse of the reminder boolean
+    // otherwise, just leave the task alone
+
+    // Spread syntax can be used when all elements from an object or array need to be included in a list of some kind.
+    setTasks(tasks.map((task)=> task.id === id ? {...task, reminder: !task.reminder} : task))
+  }
+  
+
   return (
     <div className="App">
       <Header />
-      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} />) : ('No tasks')}
+      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : ('No tasks')}
     </div>
   );
 }
