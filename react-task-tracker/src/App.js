@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 import { useState } from 'react'
 
 // This is a function component that will render
@@ -20,6 +21,16 @@ function App() {
       }
     ]
   )
+
+  const addTask = (task) => {
+    // generating a random id, but it would be better to use a Guid
+    const id = Math.floor(Math.random() * 10000) + 1
+    // add id to the task
+    const newTask = {id, ...task}
+    // take all of the tasks and add the newTask to the array
+    setTasks([...tasks, newTask])
+  }
+  
 
   // Delete a task
   // 'nfn' to create a const function with param
@@ -42,7 +53,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : ('No tasks')}
+      <AddTask onAdd={addTask}/>
+      {tasks.length > 0 ? 
+      (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : 
+      ('No tasks')}
     </div>
   );
 }
