@@ -5,6 +5,8 @@ import { useState } from 'react'
 
 // This is a function component that will render
 function App() {
+  // Setting the default state of showAddTask to false
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState(
     [
       {
@@ -52,8 +54,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <AddTask onAdd={addTask}/>
+      <Header 
+      onAdd={()=> setShowAddTask(!showAddTask)}
+      displayAddTask={showAddTask}
+      />
+      {/* if showAddTask them show the AddTask component, otherwise, do nothing */}
+      {showAddTask && <AddTask onAdd={addTask}/>}
       {tasks.length > 0 ? 
       (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : 
       ('No tasks')}
