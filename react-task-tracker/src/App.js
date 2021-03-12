@@ -1,28 +1,30 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-import { useState } from 'react'
+// useEffect allows us to do api calls
+import { useState, useEffect } from 'react'
 
 // This is a function component that will render
 function App() {
   // Setting the default state of showAddTask to false
   const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState(
-    [
-      {
-        id: 1,
-        text: 'food',
-        day: 'x',
-        reminder: false
-      },
-      {
-        id: 2,
-        text: 'hello',
-        day: 'x',
-        reminder: false
-      }
-    ]
-  )
+  const [tasks, setTasks] = useState([])
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+    getTasks()
+    // the [] is an empty dependency array that's required for useEffect()
+  }, [])
+
+  const fetchTasks = async () => {
+    const response = await fetch('http://localhost:5000/tasks')
+    const data = await response.json()
+
+    return data
+  }
 
   const addTask = (task) => {
     // generating a random id, but it would be better to use a Guid

@@ -14,3 +14,6 @@ Implementing what has been taught in [React JS Crash Course 2021](https://www.yo
 `serve -s build` to deploy the assets from the build folder and will serve on port 5000
 * [Docs on production builds](https://create-react-app.dev/docs/deployment/)
 * The React Dev Tools extension will also show that 'This page is using the production build of React. ✅'
+
+## [JSON Server](https://github.com/typicode/json-server)
+
