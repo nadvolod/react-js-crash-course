@@ -4,6 +4,8 @@ import AddTask from './components/AddTask'
 // useEffect allows us to do api calls
 import { useState, useEffect } from 'react'
 
+const tasksEndpoint = `http://localhost:5000/tasks`
+
 // This is a function component that will render
 function App() {
   // Setting the default state of showAddTask to false
@@ -20,26 +22,30 @@ function App() {
   }, [])
 
   const fetchTasks = async () => {
-    const response = await fetch('http://localhost:5000/tasks')
+    const response = await fetch(tasksEndpoint)
     const data = await response.json()
 
     return data
   }
 
-  const addTask = (task) => {
-    // generating a random id, but it would be better to use a Guid
-    const id = Math.floor(Math.random() * 10000) + 1
-    // add id to the task
-    const newTask = {id, ...task}
-    // take all of the tasks and add the newTask to the array
-    setTasks([...tasks, newTask])
+  const addTask = async (task) => {
+    const response = await fetch(tasksEndpoint, {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      // will turn JS object into a Json object
+      body: JSON.stringify(task)
+    })
+
+    const data = await response.json()
+
+    setTasks([...tasks, data])
   }
   
 
   // Delete a task
   // 'nfn' to create a const function with param
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`${tasksEndpoint}/${id}`, {
       method: 'DELETE'
     })
     

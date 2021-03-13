@@ -5,6 +5,12 @@
       "text": "food",
       "day": "x",
       "reminder": false
+    },
+    {
+      "text": "Another task",
+      "day": "Tuesday",
+      "reminder": false,
+      "id": 2
     }
   ]
 }
