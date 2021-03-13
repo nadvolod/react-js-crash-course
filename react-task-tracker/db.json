@@ -5,12 +5,6 @@
       "text": "food",
       "day": "x",
       "reminder": false
-    },
-    {
-      "id": 2,
-      "text": "hello",
-      "day": "x",
-      "reminder": false
     }
   ]
 }

@@ -38,7 +38,11 @@ function App() {
 
   // Delete a task
   // 'nfn' to create a const function with param
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'DELETE'
+    })
+    
     // When we call deleteTask(), React will show the tasks that are not filtered out by id
     setTasks(tasks.filter((task) => task.id !== id))
   }
