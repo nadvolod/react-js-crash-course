@@ -16,4 +16,3 @@ Implementing what has been taught in [React JS Crash Course 2021](https://www.yo
 * The React Dev Tools extension will also show that 'This page is using the production build of React. ✅'
 
 ## [JSON Server](https://github.com/typicode/json-server)
-
