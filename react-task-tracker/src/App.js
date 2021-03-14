@@ -28,10 +28,12 @@ function App() {
     return data
   }
 
+
+
   const addTask = async (task) => {
     const response = await fetch(tasksEndpoint, {
       method: 'POST',
-      headers: {'Content-type': 'application/json'},
+      headers: { 'Content-type': 'application/json' },
       // will turn JS object into a Json object
       body: JSON.stringify(task)
     })
@@ -40,7 +42,7 @@ function App() {
 
     setTasks([...tasks, data])
   }
-  
+
 
   // Delete a task
   // 'nfn' to create a const function with param
@@ -48,33 +50,52 @@ function App() {
     await fetch(`${tasksEndpoint}/${id}`, {
       method: 'DELETE'
     })
-    
+
     // When we call deleteTask(), React will show the tasks that are not filtered out by id
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  //Toggle reminder
-  const toggleReminder = (id) => {
-    //foreach task in our tasks, if the current task id is equal to the id that we're trying to set,
-    // then take that task using the spread operator and add a reminder to it with the inverse of the reminder boolean
-    // otherwise, just leave the task alone
+  // Toggle Reminder
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id)
+    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
 
-    // Spread syntax can be used when all elements from an object or array need to be included in a list of some kind.
-    setTasks(tasks.map((task)=> task.id === id ? {...task, reminder: !task.reminder} : task))
+    const res = await fetch(`${tasksEndpoint}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(updTask),
+    })
+
+    const data = await res.json()
+
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: data.reminder } : task
+      )
+    )
   }
-  
+
+  const fetchTask = async (id) => {
+    const res = await fetch(`${tasksEndpoint}/${id}`)
+    const data = await res.json()
+
+    return data
+  }
+
 
   return (
     <div className="App">
-      <Header 
-      onAdd={()=> setShowAddTask(!showAddTask)}
-      displayAddTask={showAddTask}
+      <Header
+        onAdd={() => setShowAddTask(!showAddTask)}
+        displayAddTask={showAddTask}
       />
       {/* if showAddTask them show the AddTask component, otherwise, do nothing */}
-      {showAddTask && <AddTask onAdd={addTask}/>}
-      {tasks.length > 0 ? 
-      (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : 
-      ('No tasks')}
+      {showAddTask && <AddTask onAdd={addTask} />}
+      {tasks.length > 0 ?
+        (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />) :
+        ('No tasks')}
     </div>
   );
 }

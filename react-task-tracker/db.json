@@ -4,12 +4,12 @@
       "id": 1,
       "text": "food",
       "day": "x",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "Another task",
       "day": "Tuesday",
-      "reminder": false,
+      "reminder": true,
       "id": 2
     }
   ]
