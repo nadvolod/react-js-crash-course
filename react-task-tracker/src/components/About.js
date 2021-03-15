@@ -10,7 +10,7 @@ const About = () => {
             using Link from 'react-router-dom' 
             which won't redo all of the web requests*/}
             {/* <a href='/'>Go Back</a> */}
-            <Link to='/'>Go Back</Link>
+            <Link to='/' data-test='back'>Go Back</Link>
 
         </div>
     )
