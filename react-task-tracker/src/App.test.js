@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import Button from '../src/components/Button';
+import App from './App';
 
 test('renders learn react link', () => {
-  render(<Button />);
-  const rootNode = screen.getByRole('button')
+  render(<App />);
+  const rootNode = screen.getByText(/Task Tracker/i)
   expect(rootNode).toBeInTheDocument();
 });
