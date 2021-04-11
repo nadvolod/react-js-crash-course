@@ -16,3 +16,12 @@ Implementing what has been taught in [React JS Crash Course 2021](https://www.yo
 * The React Dev Tools extension will also show that 'This page is using the production build of React. ✅'
 
 ## [JSON Server](https://github.com/typicode/json-server)
+
+## Adding Testing
+
+### Adding CodeCov
+
+1. [Sign up for an account](https://about.codecov.io/)
+2. Link your repository to CodeCov
+3. Follow instructions to get the project covered
+4. Add CODECOV_TOKEN to your repository secrets

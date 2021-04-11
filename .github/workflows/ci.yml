@@ -33,10 +33,17 @@ jobs:
       run: |
         cd react-task-tracker
         npm run build
+
     - name: Run component tests 🔸
       run: |
         cd react-task-tracker
-        npm run test
+        npm run test:coverage
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
     - name: Start the app 📤
       run: |
         cd react-task-tracker
