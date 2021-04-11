@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:perf": "wdio run ./wdio.conf.js",
-    "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "server": "json-server --watch db.json --port 5000"
   },

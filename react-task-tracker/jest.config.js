@@ -9,7 +9,6 @@ module.exports = {
     path.join(__dirname, 'test'),
   ],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  snapshotSerializers: ['jest-emotion'],
   // collect coverage from all the files under src that end in .js
   collectCoverageFrom: ['**/src/**/*.js'],
   coverageThreshold: {
