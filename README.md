@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/nadvolod/react-js-crash-course/branch/main/graph/badge.svg?token=OO23K8SSEI)](https://codecov.io/gh/nadvolod/react-js-crash-course)
 # react-js-crash-course
 Implementing what has been taught in [React JS Crash Course 2021](https://www.youtube.com/watch?v=w7ejDZ8SWv8) course
 
